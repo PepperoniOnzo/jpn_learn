@@ -20,6 +20,8 @@ class MatrixView with ChangeNotifier {
   int _getRand() => Random().nextInt(_maxHiragan);
 
   void refreshMatrix() {
+    _currentRow = 0;
+    _currentCol = 0;
     if (filter.length == 0) {
       matrix = List.generate(ConstData.maxMatrix, (i) {
         return List.generate(ConstData.maxMatrix, (j) {
@@ -34,27 +36,49 @@ class MatrixView with ChangeNotifier {
 
   void addLetter(String entered) {
     if (_currentCol < ConstData.maxMatrix) {
-      matrix[_currentRow][_currentCol].entered = entered;
-      _currentCol++;
+      if (_currentCol < ConstData.maxMatrix - 1) {
+        matrix[_currentRow][_currentCol].entered = entered;
+        _currentCol++;
+      } else {
+        matrix[_currentRow][_currentCol].entered = entered;
+      }
       notifyListeners();
     }
   }
 
   void removeLetter() {
-    if (_currentCol > 0) {
+    if (matrix[_currentRow][_currentCol].entered != '') {
       matrix[_currentRow][_currentCol].entered = '';
-      _currentCol--;
       notifyListeners();
+    } else {
+      if (_currentCol != 0) {
+        matrix[_currentRow][_currentCol - 1].entered = '';
+        _currentCol--;
+        notifyListeners();
+      }
     }
   }
 
   void checkAnswers() {
-    for (var i = 0; i < ConstData.maxMatrix; i++) {
-      if (matrix[_currentRow][i].entered == matrix[_currentRow][i].answer) {
-        matrix[_currentRow][i].isCorrect = true;
+    if (_currentCol == ConstData.maxMatrix - 1) {
+      for (var i = 0; i < ConstData.maxMatrix; i++) {
+        if (matrix[_currentRow][i].entered ==
+            matrix[_currentRow][i].answer.toUpperCase()) {
+          matrix[_currentRow][i].isCorrect = true;
+        }
         matrix[_currentRow][i].isChecked = true;
       }
+      _currentRow++;
+      _currentCol = 0;
+      notifyListeners();
+      return;
     }
-    notifyListeners();
+
+    if (_currentRow == ConstData.maxMatrix) {
+      _currentCol = 0;
+      _currentRow = 0;
+      refreshMatrix();
+      notifyListeners();
+    }
   }
 }

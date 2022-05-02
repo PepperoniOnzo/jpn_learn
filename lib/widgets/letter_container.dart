@@ -27,18 +27,22 @@ class LetterContainer extends StatelessWidget {
           decoration: BoxDecoration(
             color: context.watch<MatrixView>().matrix[row][column].isChecked
                 ? context.watch<MatrixView>().matrix[row][column].isCorrect
-                    ? AppColors.primaryContent
+                    ? AppColors.correctAnswer
                     : Colors.redAccent
                 : Colors.transparent,
             border: Border.all(
-                color: context.watch<MatrixView>().matrix[row][column].isCorrect
-                    ? Colors.redAccent
+                color: context.watch<MatrixView>().matrix[row][column].isChecked
+                    ? context.watch<MatrixView>().matrix[row][column].isCorrect
+                        ? AppColors.correctAnswer
+                        : Colors.redAccent
                     : AppColors.primaryContent,
                 width: 2),
           ),
           child: Center(
               child: Text(
-                  context.watch<MatrixView>().matrix[row][column].entered,
+                  context.watch<MatrixView>().matrix[row][column].isChecked
+                      ? context.watch<MatrixView>().matrix[row][column].answer.toUpperCase()
+                      : context.watch<MatrixView>().matrix[row][column].entered,
                   style: TextStyle(fontSize: 18))),
         )
       ],

@@ -8,4 +8,6 @@ class AppColors {
   
   static const Color primaryText = Color.fromARGB(255, 255, 255, 255);
   static const Color additionalText = Color.fromARGB(255, 99, 102, 109);
+
+  static const Color correctAnswer =  Color.fromARGB(255, 27, 94, 32);
 }
