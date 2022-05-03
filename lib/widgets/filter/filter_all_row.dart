@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:jpn_learn/data/colors.dart';
-import 'package:jpn_learn/view/matrix_view.dart';
 import 'package:provider/provider.dart';
 
-class FilterLetter extends StatefulWidget {
-  const FilterLetter(
-      {Key? key, required this.letter, required this.initElevated})
+import '../../data/colors.dart';
+import '../../data/const.dart';
+import '../../view/matrix_view.dart';
+
+class AllFilterRow extends StatefulWidget {
+  const AllFilterRow(
+      {Key? key,
+      required this.row,
+      required this.initElevated,
+      required this.changeFilterStates})
       : super(key: key);
-  final String letter;
+  final int row;
   final bool initElevated;
+  final Function changeFilterStates;
 
   @override
-  State<FilterLetter> createState() => FilterLetterState();
+  State<AllFilterRow> createState() => _AllFilterRowState();
 }
 
-class FilterLetterState extends State<FilterLetter> {
+class _AllFilterRowState extends State<AllFilterRow> {
   @override
   void initState() {
     _isElevated = widget.initElevated;
     super.initState();
   }
-
-  changeState() => setState(() {
-        _isElevated = !_isElevated;
-      });
-
-  getStatus() => _isElevated;
 
   late bool _isElevated;
 
@@ -37,16 +37,22 @@ class FilterLetterState extends State<FilterLetter> {
           setState(() {
             if (!_isElevated) {
               _isElevated = !_isElevated;
-              context.read<MatrixView>().addFilter(widget.letter);
+              for (var i = 0; i < ConstData.filterHiragana[widget.row]; i++) {
+                context.read<MatrixView>().addFilter(
+                    ConstData.hiragana.keys.elementAt(i + 8 * widget.row));
+              }
             } else {
               _isElevated = !_isElevated;
-              context.read<MatrixView>().deleteFilter(widget.letter);
+              for (var i = 0; i < ConstData.filterHiragana[widget.row]; i++) {
+                context.read<MatrixView>().deleteFilter(
+                    ConstData.hiragana.keys.elementAt(i + 8 * widget.row));
+              }
             }
+            widget.changeFilterStates(widget.row, _isElevated);
           });
         },
         child: AnimatedContainer(
           padding: EdgeInsets.symmetric(horizontal: 4),
-          margin: EdgeInsets.all(5),
           duration: const Duration(milliseconds: 300),
           decoration: BoxDecoration(
               color: AppColors.primaryBackground,
@@ -59,7 +65,7 @@ class FilterLetterState extends State<FilterLetter> {
                           spreadRadius: 1),
                     ]
                   : null),
-          child: Text(widget.letter, style: TextStyle(fontSize: 22)),
+          child: Text('AL', style: TextStyle(fontSize: 17)),
         ),
       ),
     );

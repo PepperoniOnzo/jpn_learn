@@ -2,10 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:jpn_learn/data/colors.dart';
 import 'package:jpn_learn/data/const.dart';
 import 'package:jpn_learn/view/matrix_view.dart';
+import 'package:jpn_learn/widgets/filter/filter_letter.dart';
 import 'package:provider/provider.dart';
 
-class Filter extends StatelessWidget {
-  const Filter({Key? key}) : super(key: key);
+import 'filter_all_row.dart';
+
+class Filter extends StatefulWidget {
+  @override
+  State<Filter> createState() => _FilterState();
+}
+
+class _FilterState extends State<Filter> {
+  final List<GlobalKey<FilterLetterState>> _allFilterRowKeys =
+      List.generate(ConstData.hiragana.length, (index) => GlobalKey());
+
+  _changeFilterStates(int row, bool status) {
+    for (var i = 0; i < ConstData.filterHiragana[row]; i++) {
+      if (_allFilterRowKeys[i + row * 8].currentState!.getStatus() != status) {
+        _allFilterRowKeys[i + row * 8].currentState!.changeState();
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +33,39 @@ class Filter extends StatelessWidget {
           Text('HIRIGANA', style: TextStyle(fontSize: 18)),
           Column(
             children:
-                List.generate(ConstData.filterHiragana.length, (index) {
-                  return Row(children: [
-                    Text('ALL'),
+                List.generate(ConstData.filterHiragana.length, (rowIndex) {
+              return Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    AllFilterRow(
+                      changeFilterStates: _changeFilterStates,
+                      row: rowIndex,
+                      initElevated: context.read<MatrixView>().filter.any(
+                          (element) => ConstData.hiragana.keys
+                              .skip(rowIndex * 8)
+                              .take(ConstData.filterHiragana[rowIndex] - 1)
+                              .contains(element)),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: Row(
+                        children: List.generate(
+                            ConstData.filterHiragana[rowIndex], (letterIndex) {
+                          return FilterLetter(
+                            key: _allFilterRowKeys[rowIndex * 8 + letterIndex],
+                            letter: ConstData.hiragana.keys
+                                .elementAt(letterIndex + 8 * rowIndex),
+                            initElevated: context
+                                .read<MatrixView>()
+                                .filter
+                                .contains(ConstData.hiragana.keys
+                                    .elementAt(letterIndex + 8 * rowIndex)),
+                          );
+                        }),
+                      ),
+                    )
                   ]);
-                }),
+            }),
           ),
           TextButton(
               onPressed: () {
@@ -33,7 +78,7 @@ class Filter extends StatelessWidget {
                       border:
                           Border.all(color: AppColors.primaryContent, width: 2),
                       borderRadius: BorderRadius.circular(5)),
-                  child: Text('Acept',
+                  child: const Text('Refresh',
                       style: TextStyle(fontSize: 18, color: Colors.white)))),
         ],
       ),

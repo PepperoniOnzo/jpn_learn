@@ -15,7 +15,7 @@ class ConstData {
     'わ': 'wa', 'を': 'wo', 'ん': 'n',
   };
 
-  static const List<int> filterHiragana = [10, 10, 10, 10, 7];
+  static const List<int> filterHiragana = [8, 8, 8, 8, 8, 6];
   
   static const List<int> kbdSizeTranscription = [10, 7, 8, 8, 7, 5];
   static const List<int> kbdLineTranscription = [0, 10, 17, 25, 33, 41];

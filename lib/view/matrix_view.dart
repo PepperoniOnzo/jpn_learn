@@ -18,6 +18,7 @@ class MatrixView with ChangeNotifier {
   }
 
   int _getRand() => Random().nextInt(_maxHiragan);
+  int _getRandFilter() => Random().nextInt(filter.length);
 
   void refreshMatrix() {
     _currentRow = 0;
@@ -30,8 +31,34 @@ class MatrixView with ChangeNotifier {
               ConstData.hiragana.entries.elementAt(position).value, '');
         });
       });
+    } else {
+      matrix = List.generate(ConstData.maxMatrix, (i) {
+        return List.generate(ConstData.maxMatrix, (j) {
+          int position = _getRandFilter();
+          return Letter(
+              filter[position],
+              ConstData.hiragana.entries
+                  .firstWhere((element) => element.key == filter[position])
+                  .value,
+              '');
+        });
+      });
     }
     notifyListeners();
+  }
+
+  void addFilter(String letter) {
+    if (!filter.contains(letter)) {
+      filter.add(letter);
+      notifyListeners();
+    }
+  }
+
+  void deleteFilter(String letter) {
+    if (filter.contains(letter)) {
+      filter.remove(letter);
+      notifyListeners();
+    }
   }
 
   void addLetter(String entered) {
