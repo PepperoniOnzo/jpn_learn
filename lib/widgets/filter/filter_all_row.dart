@@ -52,7 +52,7 @@ class _AllFilterRowState extends State<AllFilterRow> {
           });
         },
         child: AnimatedContainer(
-          padding: EdgeInsets.symmetric(horizontal: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           duration: const Duration(milliseconds: 300),
           decoration: BoxDecoration(
               color: AppColors.primaryBackground,
@@ -65,7 +65,7 @@ class _AllFilterRowState extends State<AllFilterRow> {
                           spreadRadius: 1),
                     ]
                   : null),
-          child: Text('AL', style: TextStyle(fontSize: 17)),
+          child: const Text('AL', style: TextStyle(fontSize: 17)),
         ),
       ),
     );

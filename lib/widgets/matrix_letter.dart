@@ -16,7 +16,7 @@ class MatrixLetter extends StatelessWidget {
                 children: List.generate(
                     ConstData.maxMatrix,
                     (column) => Container(
-                        padding: EdgeInsets.all(5),
+                        padding: const EdgeInsets.all(5),
                         child: LetterContainer(column: column, row: row))),
               )),
     );

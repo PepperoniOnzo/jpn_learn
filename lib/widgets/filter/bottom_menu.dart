@@ -13,7 +13,7 @@ class BottomMenu extends StatelessWidget {
         _bottomSheetFilter(context);
       },
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 150),
+        padding: const EdgeInsets.symmetric(horizontal: 150),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: const [
@@ -35,18 +35,17 @@ class BottomMenu extends StatelessWidget {
 
   void _bottomSheetFilter(BuildContext context) {
     showModalBottomSheet(
-      
         backgroundColor: Colors.transparent,
         context: context,
         builder: (context) {
           return Container(
             height: MediaQuery.of(context).size.height * 0.45,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: AppColors.primaryBackground,
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20), topRight: Radius.circular(20)),
             ),
-            child: Filter(),
+            child: const Filter(),
           );
         });
   }

@@ -23,7 +23,7 @@ class MatrixView with ChangeNotifier {
   void refreshMatrix() {
     _currentRow = 0;
     _currentCol = 0;
-    if (filter.length == 0) {
+    if (filter.isEmpty) {
       matrix = List.generate(ConstData.maxMatrix, (i) {
         return List.generate(ConstData.maxMatrix, (j) {
           int position = _getRand();

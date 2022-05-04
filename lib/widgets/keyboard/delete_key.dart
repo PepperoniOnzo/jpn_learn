@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 
 import '../../data/colors.dart';
@@ -14,7 +13,7 @@ class DeleteKey extends StatelessWidget {
       constraints: const BoxConstraints(
         minWidth: 50,
       ),
-      margin: EdgeInsets.all(3),
+      margin: const EdgeInsets.all(3),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         color: AppColors.additionalContent,
@@ -25,7 +24,7 @@ class DeleteKey extends StatelessWidget {
         }),
         child: Center(
             child: Container(
-          padding: EdgeInsets.all(6),
+          padding: const EdgeInsets.all(6),
           child: const Icon(Icons.keyboard_double_arrow_left_outlined,
               size: 22, color: Colors.white),
         )),

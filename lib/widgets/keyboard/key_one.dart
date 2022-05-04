@@ -15,7 +15,7 @@ class KeyOne extends StatelessWidget {
                   ? ConstData.hiragana.values.elementAt(keyNumber).toUpperCase()
                   : ConstData.hiragana.keys.elementAt(keyNumber);
     return Container(
-      margin: EdgeInsets.all(3),
+      margin: const EdgeInsets.all(3),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         color: AppColors.additionalContent,
@@ -26,10 +26,10 @@ class KeyOne extends StatelessWidget {
         }),
         child: Center(
             child: Container(
-          padding: EdgeInsets.all(6),
+          padding: const EdgeInsets.all(6),
           child: Text(
               letter,
-              style: TextStyle(fontSize: 20)),
+              style: const TextStyle(fontSize: 20)),
         )),
       ),
     );

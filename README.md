@@ -1,16 +1,24 @@
-# jpn_learn
+# Japanese alphabet learning app, using Provider
 
-A new Flutter project.
+## Project for learning hiragana kanas and transcriptions.
 
-## Getting Started
+On the main screan of the project randomly generated matrix full of kanas or transcriptions, depends on the mode, with special square for entering the answer.
 
-This project is a starting point for a Flutter application.
+- ### Matrix 
 
-A few resources to get you started if this is your first Flutter project:
+<p float="left">
+  <img src="https://github.com/PepperoniOnzo/readme_assets/blob/master/jpn_learn/matrix_kana.png?raw=true" width="300" height="500"/>
+  <img src="https://github.com/PepperoniOnzo/readme_assets/blob/master/jpn_learn/matrix_trans.png?raw=true"  width="300" height="500"/>
+  <img src="https://github.com/PepperoniOnzo/readme_assets/blob/master/jpn_learn/matrix_entered.png?raw=true"  width="300" height="500"/>
+</p>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- ### Filter 
+Bootom sheet with filter for choosing the mode and which canas to learn. Refresh button for resetting the matrix.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="https://github.com/PepperoniOnzo/readme_assets/blob/master/jpn_learn/filter.png?raw=true"  width="500" height="500"/>
+
+- ### Example 
+
+All functionality is working in the example.
+
+<img src="https://github.com/PepperoniOnzo/readme_assets/blob/master/jpn_learn/example.gif?raw=true" width="400" height="800" />

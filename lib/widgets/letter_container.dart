@@ -14,10 +14,10 @@ class LetterContainer extends StatelessWidget {
     return Column(
       children: <Widget>[
         Container(
-            padding: EdgeInsets.all(5),
+            padding: const EdgeInsets.all(5),
             child: Text(
               context.watch<MatrixView>().matrix[row][column].show.toUpperCase(),
-              style: TextStyle(fontSize: 23),
+              style: const TextStyle(fontSize: 23),
             )),
         Container(
           // margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
@@ -43,7 +43,7 @@ class LetterContainer extends StatelessWidget {
                   context.watch<MatrixView>().matrix[row][column].isChecked
                       ? context.watch<MatrixView>().matrix[row][column].answer.toUpperCase()
                       : context.watch<MatrixView>().matrix[row][column].entered,
-                  style: TextStyle(fontSize: 18))),
+                  style: const TextStyle(fontSize: 18))),
         )
       ],
     );

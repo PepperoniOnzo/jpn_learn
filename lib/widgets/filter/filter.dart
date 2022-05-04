@@ -9,6 +9,8 @@ import 'package:provider/provider.dart';
 import 'filter_all_row.dart';
 
 class Filter extends StatefulWidget {
+  const Filter({Key? key}) : super(key: key);
+
   @override
   State<Filter> createState() => _FilterState();
 }
@@ -28,10 +30,10 @@ class _FilterState extends State<Filter> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(15),
+      padding: const EdgeInsets.all(15),
       child: Column(
         children: [
-          FilterType(),
+          const FilterType(),
           Column(
             children:
                 List.generate(ConstData.filterHiragana.length, (rowIndex) {
@@ -76,7 +78,7 @@ class _FilterState extends State<Filter> {
               },
               child: Container(
                   padding:
-                      EdgeInsets.only(top: 5, bottom: 5, left: 15, right: 15),
+                      const EdgeInsets.only(top: 5, bottom: 5, left: 15, right: 15),
                   decoration: BoxDecoration(
                       border:
                           Border.all(color: AppColors.primaryContent, width: 2),

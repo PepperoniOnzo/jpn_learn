@@ -45,8 +45,8 @@ class FilterLetterState extends State<FilterLetter> {
           });
         },
         child: AnimatedContainer(
-          padding: EdgeInsets.symmetric(horizontal: 4),
-          margin: EdgeInsets.all(5),
+          padding: const EdgeInsets.symmetric(horizontal: 4),
+          margin: const EdgeInsets.all(5),
           duration: const Duration(milliseconds: 300),
           decoration: BoxDecoration(
               color: AppColors.primaryBackground,
@@ -59,7 +59,7 @@ class FilterLetterState extends State<FilterLetter> {
                           spreadRadius: 1),
                     ]
                   : null),
-          child: Text(widget.letter, style: TextStyle(fontSize: 22)),
+          child: Text(widget.letter, style: const TextStyle(fontSize: 22)),
         ),
       ),
     );

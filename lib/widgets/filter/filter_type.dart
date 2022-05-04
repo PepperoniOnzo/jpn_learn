@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:jpn_learn/view/matrix_view.dart';
 import 'package:provider/provider.dart';
 
@@ -31,12 +30,12 @@ class _FilterTypeState extends State<FilterType> {
             ),
             child: Column(
               children: [
-                Text('HIRIGANA', style: TextStyle(fontSize: 18)),
+                const Text('HIRIGANA', style: TextStyle(fontSize: 18)),
                 AnimatedOpacity(
                   opacity:
                       context.read<MatrixView>().learnTranscription ? 1.0 : 0,
                   duration: const Duration(milliseconds: 250),
-                  child: Divider(
+                  child: const Divider(
                     thickness: 2,
                     color: Colors.white,
                   ),
@@ -60,12 +59,12 @@ class _FilterTypeState extends State<FilterType> {
             ),
             child: Column(
               children: [
-                Text('TRANSCRIPTION', style: TextStyle(fontSize: 18)),
+                const Text('TRANSCRIPTION', style: TextStyle(fontSize: 18)),
                 AnimatedOpacity(
                   opacity:
                       !context.read<MatrixView>().learnTranscription ? 1.0 : 0,
                   duration: const Duration(milliseconds: 250),
-                  child: Divider(
+                  child: const Divider(
                     thickness: 2,
                     color: Colors.white,
                   ),

@@ -15,7 +15,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         body: Column(
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
+      children: const <Widget>[
         Expanded(flex: 15, child: MatrixLetter()),
         Expanded(flex: 7, child: Keyboard()),
         Expanded(flex: 1, child: BottomMenu())
