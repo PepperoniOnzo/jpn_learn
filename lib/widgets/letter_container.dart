@@ -16,7 +16,7 @@ class LetterContainer extends StatelessWidget {
         Container(
             padding: EdgeInsets.all(5),
             child: Text(
-              context.watch<MatrixView>().matrix[row][column].show,
+              context.watch<MatrixView>().matrix[row][column].show.toUpperCase(),
               style: TextStyle(fontSize: 23),
             )),
         Container(

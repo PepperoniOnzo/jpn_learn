@@ -20,6 +20,6 @@ class ConstData {
   static const List<int> kbdSizeTranscription = [10, 7, 8, 8, 7, 5];
   static const List<int> kbdLineTranscription = [0, 10, 17, 25, 33, 41];
 
-  static const List<int> kbdSizeHiragana = [10, 10, 9, 9, 8];
-  static const List<int> kbdLineHiragana = [0, 10, 20, 29, 38];
+  static const List<int> kbdSizeHiragana = [10, 10, 10, 9, 6];
+  static const List<int> kbdLineHiragana = [0, 10, 20, 30, 39];
 }

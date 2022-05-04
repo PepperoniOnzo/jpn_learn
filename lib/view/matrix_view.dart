@@ -27,20 +27,30 @@ class MatrixView with ChangeNotifier {
       matrix = List.generate(ConstData.maxMatrix, (i) {
         return List.generate(ConstData.maxMatrix, (j) {
           int position = _getRand();
-          return Letter(ConstData.hiragana.entries.elementAt(position).key,
-              ConstData.hiragana.entries.elementAt(position).value, '');
+          return learnTranscription
+              ? Letter(ConstData.hiragana.entries.elementAt(position).key,
+                  ConstData.hiragana.entries.elementAt(position).value, '')
+              : Letter(ConstData.hiragana.entries.elementAt(position).value,
+                  ConstData.hiragana.entries.elementAt(position).key, '');
         });
       });
     } else {
       matrix = List.generate(ConstData.maxMatrix, (i) {
         return List.generate(ConstData.maxMatrix, (j) {
           int position = _getRandFilter();
-          return Letter(
-              filter[position],
-              ConstData.hiragana.entries
-                  .firstWhere((element) => element.key == filter[position])
-                  .value,
-              '');
+          return learnTranscription
+              ? Letter(
+                  filter[position],
+                  ConstData.hiragana.entries
+                      .firstWhere((element) => element.key == filter[position])
+                      .value,
+                  '')
+              : Letter(
+                  ConstData.hiragana.entries
+                      .firstWhere((element) => element.key == filter[position])
+                      .value,
+                  filter[position],
+                  '');
         });
       });
     }

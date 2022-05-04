@@ -3,6 +3,7 @@ import 'package:jpn_learn/data/colors.dart';
 import 'package:jpn_learn/data/const.dart';
 import 'package:jpn_learn/view/matrix_view.dart';
 import 'package:jpn_learn/widgets/filter/filter_letter.dart';
+import 'package:jpn_learn/widgets/filter/filter_type.dart';
 import 'package:provider/provider.dart';
 
 import 'filter_all_row.dart';
@@ -30,12 +31,13 @@ class _FilterState extends State<Filter> {
       padding: EdgeInsets.all(15),
       child: Column(
         children: [
-          Text('HIRIGANA', style: TextStyle(fontSize: 18)),
+          FilterType(),
           Column(
             children:
                 List.generate(ConstData.filterHiragana.length, (rowIndex) {
               return Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     AllFilterRow(
                       changeFilterStates: _changeFilterStates,
@@ -47,8 +49,9 @@ class _FilterState extends State<Filter> {
                               .contains(element)),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      padding: const EdgeInsets.only(left: 5),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: List.generate(
                             ConstData.filterHiragana[rowIndex], (letterIndex) {
                           return FilterLetter(

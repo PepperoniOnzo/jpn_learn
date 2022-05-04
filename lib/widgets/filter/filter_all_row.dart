@@ -52,7 +52,7 @@ class _AllFilterRowState extends State<AllFilterRow> {
           });
         },
         child: AnimatedContainer(
-          padding: EdgeInsets.symmetric(horizontal: 4),
+          padding: EdgeInsets.symmetric(horizontal: 8),
           duration: const Duration(milliseconds: 300),
           decoration: BoxDecoration(
               color: AppColors.primaryBackground,

@@ -40,7 +40,7 @@ class BottomMenu extends StatelessWidget {
         context: context,
         builder: (context) {
           return Container(
-            height: MediaQuery.of(context).size.height * 0.43,
+            height: MediaQuery.of(context).size.height * 0.45,
             decoration: BoxDecoration(
               color: AppColors.primaryBackground,
               borderRadius: BorderRadius.only(
